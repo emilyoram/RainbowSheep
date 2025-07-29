@@ -1,6 +1,7 @@
 package com.gmail.sheepingtoninc.rainbowsheep;
 
 import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
+import com.gmail.sheepingtoninc.rainbowsheep.block.FlammableBlock;
 import com.gmail.sheepingtoninc.rainbowsheep.item.RainbowDye;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -14,8 +15,10 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -30,7 +33,7 @@ public class RainbowSheep {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
 
-    public static final DeferredBlock<Block> RAINBOW_WOOL_BLOCK = BLOCKS.register("rainbow_wool", registryName -> new Block(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> RAINBOW_WOOL_BLOCK = BLOCKS.register("rainbow_wool", registryName -> new FlammableBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_YELLOW)
             .instrument(NoteBlockInstrument.GUITAR)
             .strength(0.8F)
@@ -45,13 +48,9 @@ public class RainbowSheep {
     public RainbowSheep(IEventBus modBus, ModContainer container) {
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
-        setup();
     }
 
-    private static void setup() {
-        FireBlock fireBlock = (FireBlock) Blocks.FIRE;
-        Block rainbowWool = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("rainbowsheep", "rainbow_wool"));
-        System.out.println("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOK" + rainbowWool);
-        //fireBlock.setFlammable(rainbowWool, 30, 60);
+    @SubscribeEvent
+    public void onCommonSetup(FMLCommonSetupEvent event) {
     }
 }
