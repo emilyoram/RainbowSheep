@@ -1,9 +1,14 @@
 package com.gmail.sheepingtoninc.rainbowsheep;
 
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
+import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
+import com.gmail.sheepingtoninc.rainbowsheep.item.RainbowDye;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -12,6 +17,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -33,10 +39,19 @@ public class RainbowSheep {
     ));
 
     public static final Supplier<BlockItem> RAINBOW_WOOL_ITEM = ITEMS.registerSimpleBlockItem("rainbow_wool", RAINBOW_WOOL_BLOCK);
+    public static final DeferredItem<RainbowDye> RAINBOW_DYE_ITEM = ITEMS.register("rainbow_dye", () -> new RainbowDye(new Item.Properties(), FlagWool.RAINBOW));
 
 
     public RainbowSheep(IEventBus modBus, ModContainer container) {
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
+        setup();
+    }
+
+    private static void setup() {
+        FireBlock fireBlock = (FireBlock) Blocks.FIRE;
+        Block rainbowWool = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("rainbowsheep", "rainbow_wool"));
+        System.out.println("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOK" + rainbowWool);
+        //fireBlock.setFlammable(rainbowWool, 30, 60);
     }
 }
