@@ -19,7 +19,6 @@ public class RainbowDye extends Item {
 
     public RainbowDye(Properties properties, FlagWool flagWool) {
         super(properties);
-        this.flagWool = flagWool;
     }
 
     @Override
