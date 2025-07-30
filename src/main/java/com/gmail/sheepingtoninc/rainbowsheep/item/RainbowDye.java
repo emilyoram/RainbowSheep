@@ -14,11 +14,8 @@ import net.minecraft.world.item.ItemStack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep.FLAG;
-
 public class RainbowDye extends Item {
     private static final Logger log = LoggerFactory.getLogger(RainbowDye.class);
-    private final FlagWool flagWool;
 
     public RainbowDye(Properties properties, FlagWool flagWool) {
         super(properties);
@@ -31,7 +28,7 @@ public class RainbowDye extends Item {
             sheep.level().playSound(player, sheep, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
             if (!player.level().isClientSide) {
                 ((IFlagSheep) sheep).setFlagWool(1);
-                log.info(sheep.getData(FLAG).toString());
+                log.info(((IFlagSheep)sheep).getFlagWool() + "");
                 stack.shrink(1);
             }
 
