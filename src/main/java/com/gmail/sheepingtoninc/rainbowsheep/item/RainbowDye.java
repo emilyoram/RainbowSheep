@@ -16,9 +16,11 @@ import org.slf4j.LoggerFactory;
 
 public class RainbowDye extends Item {
     private static final Logger log = LoggerFactory.getLogger(RainbowDye.class);
+    private final FlagWool flagWool;
 
     public RainbowDye(Properties properties, FlagWool flagWool) {
         super(properties);
+        this.flagWool = flagWool;
     }
 
     @Override
@@ -26,7 +28,7 @@ public class RainbowDye extends Item {
         if (target instanceof Sheep sheep && sheep.isAlive() && !sheep.isSheared()) {
             sheep.level().playSound(player, sheep, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
             if (!player.level().isClientSide) {
-                ((IFlagSheep) sheep).setFlagWool(1);
+                ((IFlagSheep) sheep).setFlagWool(flagWool.ordinal());
                 log.info(((IFlagSheep)sheep).getFlagWool() + "");
                 stack.shrink(1);
             }

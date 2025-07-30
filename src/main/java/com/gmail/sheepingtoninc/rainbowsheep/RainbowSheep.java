@@ -48,6 +48,7 @@ public class RainbowSheep {
 
     public static final Supplier<BlockItem> RAINBOW_WOOL_ITEM = ITEMS.registerSimpleBlockItem("rainbow_wool", RAINBOW_WOOL_BLOCK);
     public static final DeferredItem<RainbowDye> RAINBOW_DYE_ITEM = ITEMS.register("rainbow_dye", () -> new RainbowDye(new Item.Properties(), FlagWool.RAINBOW));
+    public static final DeferredItem<RainbowDye> BORING_DYE_ITEM = ITEMS.register("boring_dye", () -> new RainbowDye(new Item.Properties(), FlagWool.NONE));
 
     public static final Supplier<AttachmentType<Integer>> FLAG = ATTACHMENT_TYPES.register(
             "flag", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build());
