@@ -1,17 +1,14 @@
 package com.gmail.sheepingtoninc.rainbowsheep.mixin;
 
-import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
 import com.gmail.sheepingtoninc.rainbowsheep.api.IFlagSheep;
-import com.llamalad7.mixinextras.sugar.Local;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Sheep;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -36,13 +33,14 @@ public class SheepMixin implements IFlagSheep {
         return getData().get(FLAG);
     }
 
-    @Override
-    public void helloSheep() {
-        log.info("Hello sheep");
-    }
-
     @Inject(method = "Lnet/minecraft/world/entity/animal/Sheep;defineSynchedData(Lnet/minecraft/network/syncher/SynchedEntityData$Builder;)V", at = @At("TAIL"))
     private void defineSynchedData (SynchedEntityData.Builder builder, CallbackInfo ci) {
         builder.define(FLAG, 0);
     }
+
+    @Inject(method = "Lnet/minecraft/world/entity/animal/Sheep;addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
+    private void addAdditionalSaveData(CompoundTag compound, CallbackInfo ci) { compound.putInt("Flag", this.getFlagWool()); }
+
+    @Inject(method = "Lnet/minecraft/world/entity/animal/Sheep;readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
+    private void readAdditionalSaveData(CompoundTag compound, CallbackInfo ci) { this.setFlagWool(compound.getInt("Flag")); }
 }
