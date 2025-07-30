@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(SheepFurLayer.class)
 public class SheepFurLayerMixin {
     private static final ResourceLocation RAINBOW = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_rainbow.png");
+    private static final ResourceLocation TRANSGENDER = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_transgender.png");
 
     @ModifyArg(
             method = "render",
@@ -22,10 +23,11 @@ public class SheepFurLayerMixin {
             index = 2
     )
     private ResourceLocation modifyFurTexture(ResourceLocation original, @Local Sheep livingEntity) {
-        if (((IFlagSheep) livingEntity).getFlagWool() == 1) {
-            return RAINBOW;
-        }
-        return original;
+        return switch (((IFlagSheep) livingEntity).getFlagWool()) {
+            case 1 -> RAINBOW;
+            case 2 -> TRANSGENDER;
+            default -> original;
+        };
     }
 
     @ModifyArg(
