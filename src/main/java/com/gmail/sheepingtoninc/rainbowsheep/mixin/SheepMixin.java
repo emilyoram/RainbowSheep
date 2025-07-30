@@ -29,7 +29,6 @@ public class SheepMixin implements IFlagSheep {
     @Override
     public void setFlagWool(int flag) {
         getData().set(FLAG, flag);
-
     }
 
     @Override
