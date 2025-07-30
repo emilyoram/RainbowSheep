@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.gmail.sheepingtoninc.rainbowsheep.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "SheepMixin",
+    "SheepFurLayerMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

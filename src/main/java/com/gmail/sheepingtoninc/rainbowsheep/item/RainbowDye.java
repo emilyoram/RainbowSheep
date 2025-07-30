@@ -1,8 +1,7 @@
 package com.gmail.sheepingtoninc.rainbowsheep.item;
 
 import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import com.gmail.sheepingtoninc.rainbowsheep.api.IFlagSheep;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -12,9 +11,13 @@ import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import static com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep.FLAG;
 
 public class RainbowDye extends Item {
+    private static final Logger log = LoggerFactory.getLogger(RainbowDye.class);
     private final FlagWool flagWool;
 
     public RainbowDye(Properties properties, FlagWool flagWool) {
@@ -27,7 +30,8 @@ public class RainbowDye extends Item {
         if (target instanceof Sheep sheep && sheep.isAlive() && !sheep.isSheared()) {
             sheep.level().playSound(player, sheep, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
             if (!player.level().isClientSide) {
-                //sheep.setColor(this.dyeColor);
+                ((IFlagSheep) sheep).setFlagWool(1);
+                log.info(sheep.getData(FLAG).toString());
                 stack.shrink(1);
             }
 
