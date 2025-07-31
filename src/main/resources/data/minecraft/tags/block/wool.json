@@ -1,0 +1,13 @@
+{
+  "values": [
+    {
+      "id": "rainbowsheep:rainbow_wool",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:transgender_wool",
+      "required": false
+    }
+  ],
+  "replace": false
+}
