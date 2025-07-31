@@ -2,12 +2,11 @@ package com.gmail.sheepingtoninc.rainbowsheep;
 
 import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
 import com.gmail.sheepingtoninc.rainbowsheep.block.FlagCarpetBlock;
-import com.gmail.sheepingtoninc.rainbowsheep.block.FlammableBlock;
+import com.gmail.sheepingtoninc.rainbowsheep.block.FlagWoolBlock;
 import com.gmail.sheepingtoninc.rainbowsheep.item.RainbowDye;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CarpetBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -31,14 +30,14 @@ public class RainbowSheep {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
 
-    public static final DeferredBlock<Block> RAINBOW_WOOL_BLOCK = BLOCKS.register("rainbow_wool", registryName -> new FlammableBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> RAINBOW_WOOL_BLOCK = BLOCKS.register("rainbow_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_RED)
             .instrument(NoteBlockInstrument.GUITAR)
             .strength(0.8F)
             .sound(SoundType.WOOL)
             .ignitedByLava()
     ));
-    public static final DeferredBlock<Block> TRANSGENDER_WOOL_BLOCK = BLOCKS.register("transgender_wool", registryName -> new FlammableBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> TRANSGENDER_WOOL_BLOCK = BLOCKS.register("transgender_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_LIGHT_BLUE)
             .instrument(NoteBlockInstrument.GUITAR)
             .strength(0.8F)

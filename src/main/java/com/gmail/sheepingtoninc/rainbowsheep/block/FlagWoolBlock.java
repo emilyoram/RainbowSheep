@@ -7,8 +7,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.extensions.IBlockExtension;
 
-public class FlammableBlock extends Block implements IBlockExtension {
-    public FlammableBlock(Properties properties) {
+public class FlagWoolBlock extends Block implements IBlockExtension {
+    public FlagWoolBlock(Properties properties) {
         super(properties);
     }
 
