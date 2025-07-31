@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "minecraft:block/light_blue_wool",
+    "side": "rainbowsheep:block/transgender_wool"
+  }
+}

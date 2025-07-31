@@ -1,6 +1,4 @@
 package com.gmail.sheepingtoninc.rainbowsheep.api;
 
-import java.io.Serializable;
 
-public enum FlagWool implements Serializable { NONE, RAINBOW, TRANSGENDER, LESBIAN
-}
+public enum FlagWool { NONE, RAINBOW, TRANSGENDER, LESBIAN }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "rainbowsheep:block/transgender_carpet"
+    },
+    "facing=east":{
+      "model": "rainbowsheep:block/transgender_carpet",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "rainbowsheep:block/transgender_carpet",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "rainbowsheep:block/transgender_carpet",
+      "y": 270
+    }
+  }
+}
