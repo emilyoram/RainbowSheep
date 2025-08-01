@@ -3,8 +3,9 @@
   "package": "com.gmail.sheepingtoninc.rainbowsheep.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "SheepMixin",
-    "SheepFurLayerMixin"
+    "DyeItemMixin",
+    "SheepFurLayerMixin",
+    "SheepMixin"
   ],
   "client": [
   ],

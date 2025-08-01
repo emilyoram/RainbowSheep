@@ -23,7 +23,7 @@ public class SheepFurLayerMixin {
             index = 2
     )
     private ResourceLocation modifyFurTexture(ResourceLocation original, @Local Sheep livingEntity) {
-        return switch (((IFlagSheep) livingEntity).getFlagWool()) {
+        return switch (((IFlagSheep) livingEntity).rainbowSheep$getFlagWool()) {
             case 1 -> RAINBOW;
             case 2 -> TRANSGENDER;
             default -> original;
@@ -39,7 +39,7 @@ public class SheepFurLayerMixin {
             index = 13
     )
     private int removeFurTint(int original, @Local Sheep livingEntity) {
-        if (((IFlagSheep) livingEntity).getFlagWool() != 0) {
+        if (((IFlagSheep) livingEntity).rainbowSheep$getFlagWool() != 0) {
             return -1644826;
         }
         return original;

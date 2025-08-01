@@ -2,7 +2,7 @@ package com.gmail.sheepingtoninc.rainbowsheep.api;
 
 public interface IFlagSheep {
 
-    void setFlagWool(int flag);
+    void rainbowSheep$setFlagWool(int flag);
 
-    int getFlagWool();
+    int rainbowSheep$getFlagWool();
 }
