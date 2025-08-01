@@ -3,7 +3,7 @@ package com.gmail.sheepingtoninc.rainbowsheep;
 import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
 import com.gmail.sheepingtoninc.rainbowsheep.block.FlagCarpetBlock;
 import com.gmail.sheepingtoninc.rainbowsheep.block.FlagWoolBlock;
-import com.gmail.sheepingtoninc.rainbowsheep.item.RainbowDye;
+import com.gmail.sheepingtoninc.rainbowsheep.item.RainbowDyeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -37,6 +37,12 @@ public class RainbowSheep {
             .sound(SoundType.WOOL)
             .ignitedByLava()
     ));
+    public static final DeferredBlock<Block> RAINBOW_CARPET_BLOCK = BLOCKS.register("rainbow_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_LIGHT_BLUE)
+            .strength(0.1F)
+            .sound(SoundType.WOOL)
+            .ignitedByLava()
+    ));
     public static final DeferredBlock<Block> TRANSGENDER_WOOL_BLOCK = BLOCKS.register("transgender_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_LIGHT_BLUE)
             .instrument(NoteBlockInstrument.GUITAR)
@@ -44,7 +50,7 @@ public class RainbowSheep {
             .sound(SoundType.WOOL)
             .ignitedByLava()
     ));
-    public static final DeferredBlock<Block> TRANSGENDER_CARPET = BLOCKS.register("transgender_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> TRANSGENDER_CARPET_BLOCK = BLOCKS.register("transgender_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_LIGHT_BLUE)
             .strength(0.1F)
             .sound(SoundType.WOOL)
@@ -52,10 +58,11 @@ public class RainbowSheep {
     ));
 
     public static final Supplier<BlockItem> RAINBOW_WOOL_ITEM = ITEMS.registerSimpleBlockItem("rainbow_wool", RAINBOW_WOOL_BLOCK);
+    public static final Supplier<BlockItem> RAINBOW_CARPET_ITEM = ITEMS.registerSimpleBlockItem("rainbow_carpet", RAINBOW_CARPET_BLOCK);
     public static final Supplier<BlockItem> TRANSGENDER_WOOL_ITEM = ITEMS.registerSimpleBlockItem("transgender_wool", TRANSGENDER_WOOL_BLOCK);
-    public static final Supplier<BlockItem> TRANSGENDER_CARPET_ITEM = ITEMS.registerSimpleBlockItem("transgender_carpet", TRANSGENDER_CARPET);
-    public static final DeferredItem<RainbowDye> RAINBOW_DYE_ITEM = ITEMS.register("rainbow_dye", () -> new RainbowDye(new Item.Properties(), FlagWool.RAINBOW));
-    public static final DeferredItem<RainbowDye> TRANSGENDER_DYE_ITEM = ITEMS.register("transgender_dye", () -> new RainbowDye(new Item.Properties(), FlagWool.TRANSGENDER));
+    public static final Supplier<BlockItem> TRANSGENDER_CARPET_ITEM = ITEMS.registerSimpleBlockItem("transgender_carpet", TRANSGENDER_CARPET_BLOCK);
+    public static final DeferredItem<RainbowDyeItem> RAINBOW_DYE_ITEM = ITEMS.register("rainbow_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.RAINBOW));
+    public static final DeferredItem<RainbowDyeItem> TRANSGENDER_DYE_ITEM = ITEMS.register("transgender_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.TRANSGENDER));
 
     public RainbowSheep(IEventBus modBus, ModContainer container) {
         BLOCKS.register(modBus);

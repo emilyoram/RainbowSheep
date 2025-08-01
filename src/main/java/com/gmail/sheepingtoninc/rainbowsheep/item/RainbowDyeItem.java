@@ -14,11 +14,11 @@ import net.minecraft.world.item.ItemStack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RainbowDye extends Item {
-    private static final Logger log = LoggerFactory.getLogger(RainbowDye.class);
+public class RainbowDyeItem extends Item {
+    private static final Logger log = LoggerFactory.getLogger(RainbowDyeItem.class);
     private final FlagWool flagWool;
 
-    public RainbowDye(Properties properties, FlagWool flagWool) {
+    public RainbowDyeItem(Properties properties, FlagWool flagWool) {
         super(properties);
         this.flagWool = flagWool;
     }
