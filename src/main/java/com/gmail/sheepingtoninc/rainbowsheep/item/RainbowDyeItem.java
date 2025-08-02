@@ -11,11 +11,8 @@ import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class RainbowDyeItem extends Item {
-    private static final Logger log = LoggerFactory.getLogger(RainbowDyeItem.class);
     private final FlagWool flagWool;
 
     public RainbowDyeItem(Properties properties, FlagWool flagWool) {
@@ -29,7 +26,6 @@ public class RainbowDyeItem extends Item {
             sheep.level().playSound(player, sheep, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
             if (!player.level().isClientSide) {
                 ((IFlagSheep) sheep).rainbowSheep$setFlagWool(flagWool.ordinal());
-                log.info(((IFlagSheep)sheep).rainbowSheep$getFlagWool() + "");
                 stack.shrink(1);
             }
 

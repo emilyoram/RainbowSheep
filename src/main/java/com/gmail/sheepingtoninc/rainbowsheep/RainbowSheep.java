@@ -3,7 +3,11 @@ package com.gmail.sheepingtoninc.rainbowsheep;
 import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
 import com.gmail.sheepingtoninc.rainbowsheep.block.FlagCarpetBlock;
 import com.gmail.sheepingtoninc.rainbowsheep.block.FlagWoolBlock;
+import com.gmail.sheepingtoninc.rainbowsheep.data.ModRecipeProvider;
 import com.gmail.sheepingtoninc.rainbowsheep.item.RainbowDyeItem;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -16,10 +20,12 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
 @Mod(RainbowSheep.MODID)

@@ -55,15 +55,15 @@ public abstract class SheepMixin implements IFlagSheep {
         return getData().get(FLAG);
     }
 
-    @Inject(method = "Lnet/minecraft/world/entity/animal/Sheep;defineSynchedData(Lnet/minecraft/network/syncher/SynchedEntityData$Builder;)V", at = @At("TAIL"))
+    @Inject(method = "defineSynchedData(Lnet/minecraft/network/syncher/SynchedEntityData$Builder;)V", at = @At("TAIL"))
     private void defineFlagSynchedData (SynchedEntityData.Builder builder, CallbackInfo ci) {
         builder.define(FLAG, 0);
     }
 
-    @Inject(method = "Lnet/minecraft/world/entity/animal/Sheep;addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
+    @Inject(method = "addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
     private void addFlagSaveData(CompoundTag compound, CallbackInfo ci) { compound.putInt("Flag", this.rainbowSheep$getFlagWool()); }
 
-    @Inject(method = "Lnet/minecraft/world/entity/animal/Sheep;readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
+    @Inject(method = "readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
     private void readFlagSaveData(CompoundTag compound, CallbackInfo ci) { this.rainbowSheep$setFlagWool(compound.getInt("Flag")); }
 
     @ModifyArg(method = "shear", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/animal/Sheep;spawnAtLocation(Lnet/minecraft/world/level/ItemLike;I)Lnet/minecraft/world/entity/item/ItemEntity;"))

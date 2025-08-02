@@ -1,11 +1,7 @@
 {
   "values": [
     {
-      "id": "rainbowsheep:rainbow_wool",
-      "required": false
-    },
-    {
-      "id": "rainbowsheep:transgender_wool",
+      "id": "#rainbowsheep:flag_wool",
       "required": false
     }
   ],
