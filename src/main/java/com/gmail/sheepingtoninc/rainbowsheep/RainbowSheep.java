@@ -62,13 +62,63 @@ public class RainbowSheep {
             .sound(SoundType.WOOL)
             .ignitedByLava()
     ));
+    public static final DeferredBlock<Block> BISEXUAL_WOOL_BLOCK = BLOCKS.register("bisexual_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_MAGENTA)
+            .instrument(NoteBlockInstrument.GUITAR)
+            .strength(0.8F)
+            .sound(SoundType.WOOL)
+            .ignitedByLava()
+    ));
+    public static final DeferredBlock<Block> BISEXUAL_CARPET_BLOCK = BLOCKS.register("bisexual_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_MAGENTA)
+            .strength(0.1F)
+            .sound(SoundType.WOOL)
+            .ignitedByLava()
+    ));
+    public static final DeferredBlock<Block> LESBIAN_WOOL_BLOCK = BLOCKS.register("lesbian_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_ORANGE)
+            .instrument(NoteBlockInstrument.GUITAR)
+            .strength(0.8F)
+            .sound(SoundType.WOOL)
+            .ignitedByLava()
+    ));
+    public static final DeferredBlock<Block> LESBIAN_CARPET_BLOCK = BLOCKS.register("lesbian_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_ORANGE)
+            .strength(0.1F)
+            .sound(SoundType.WOOL)
+            .ignitedByLava()
+    ));
+    public static final DeferredBlock<Block> ASEXUAL_WOOL_BLOCK = BLOCKS.register("asexual_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_ORANGE)
+            .instrument(NoteBlockInstrument.GUITAR)
+            .strength(0.8F)
+            .sound(SoundType.WOOL)
+            .ignitedByLava()
+    ));
+    public static final DeferredBlock<Block> ASEXUAL_CARPET_BLOCK = BLOCKS.register("asexual_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_ORANGE)
+            .strength(0.1F)
+            .sound(SoundType.WOOL)
+            .ignitedByLava()
+    ));
+
 
     public static final Supplier<BlockItem> RAINBOW_WOOL_ITEM = ITEMS.registerSimpleBlockItem("rainbow_wool", RAINBOW_WOOL_BLOCK);
     public static final Supplier<BlockItem> RAINBOW_CARPET_ITEM = ITEMS.registerSimpleBlockItem("rainbow_carpet", RAINBOW_CARPET_BLOCK);
     public static final Supplier<BlockItem> TRANSGENDER_WOOL_ITEM = ITEMS.registerSimpleBlockItem("transgender_wool", TRANSGENDER_WOOL_BLOCK);
     public static final Supplier<BlockItem> TRANSGENDER_CARPET_ITEM = ITEMS.registerSimpleBlockItem("transgender_carpet", TRANSGENDER_CARPET_BLOCK);
+    public static final Supplier<BlockItem> BISEXUAL_WOOL_ITEM = ITEMS.registerSimpleBlockItem("bisexual_wool", BISEXUAL_WOOL_BLOCK);
+    public static final Supplier<BlockItem> BISEXUAL_CARPET_ITEM = ITEMS.registerSimpleBlockItem("bisexual_carpet", BISEXUAL_CARPET_BLOCK);
+    public static final Supplier<BlockItem> LESBIAN_WOOL_ITEM = ITEMS.registerSimpleBlockItem("lesbian_wool", LESBIAN_WOOL_BLOCK);
+    public static final Supplier<BlockItem> LESBIAN_CARPET_ITEM = ITEMS.registerSimpleBlockItem("lesbian_carpet", LESBIAN_CARPET_BLOCK);
+    public static final Supplier<BlockItem> ASEXUAL_WOOL_ITEM = ITEMS.registerSimpleBlockItem("asexual_wool", ASEXUAL_WOOL_BLOCK);
+    public static final Supplier<BlockItem> ASEXUAL_CARPET_ITEM = ITEMS.registerSimpleBlockItem("asexual_carpet", ASEXUAL_CARPET_BLOCK);
     public static final DeferredItem<RainbowDyeItem> RAINBOW_DYE_ITEM = ITEMS.register("rainbow_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.RAINBOW));
     public static final DeferredItem<RainbowDyeItem> TRANSGENDER_DYE_ITEM = ITEMS.register("transgender_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.TRANSGENDER));
+    public static final DeferredItem<RainbowDyeItem> BISEXUAL_DYE_ITEM = ITEMS.register("bisexual_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.BISEXUAL));
+    public static final DeferredItem<RainbowDyeItem> LESBIAN_DYE_ITEM = ITEMS.register("lesbian_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.LESBIAN));
+    public static final DeferredItem<RainbowDyeItem> ASEXUAL_DYE_ITEM = ITEMS.register("asexual_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.ASEXUAL));
+
 
     public RainbowSheep(IEventBus modBus, ModContainer container) {
         BLOCKS.register(modBus);

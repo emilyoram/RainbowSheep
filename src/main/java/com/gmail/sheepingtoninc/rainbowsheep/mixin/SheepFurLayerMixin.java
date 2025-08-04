@@ -13,6 +13,9 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 public class SheepFurLayerMixin {
     private static final ResourceLocation RAINBOW = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_rainbow.png");
     private static final ResourceLocation TRANSGENDER = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_transgender.png");
+    private static final ResourceLocation BISEXUAL = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_bisexual.png");
+    private static final ResourceLocation LESBIAN = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_lesbian.png");
+    private static final ResourceLocation ASEXUAL = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_asexual.png");
 
     @ModifyArg(
             method = "render",
@@ -26,6 +29,9 @@ public class SheepFurLayerMixin {
         return switch (((IFlagSheep) livingEntity).rainbowSheep$getFlagWool()) {
             case 1 -> RAINBOW;
             case 2 -> TRANSGENDER;
+            case 3 -> BISEXUAL;
+            case 4 -> LESBIAN;
+            case 5 -> ASEXUAL;
             default -> original;
         };
     }

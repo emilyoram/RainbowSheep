@@ -1,0 +1,29 @@
+{
+  "values": [
+    {
+      "id": "rainbowsheep:rainbow_carpet",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:transgender_carpet",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:bisexual_carpet",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:lesbian_carpet",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:asexual_carpet",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:nonbinary_carpet",
+      "required": false
+    }
+  ],
+  "replace": false
+}

@@ -15,8 +15,8 @@ public class FlagCarpetBlock extends CarpetBlock {
     public static final MapCodec<FlagCarpetBlock> CODEC = simpleCodec(FlagCarpetBlock::new);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-    public FlagCarpetBlock(Properties p_152915_) {
-        super(p_152915_);
+    public FlagCarpetBlock(Properties properties) {
+        super(properties);
 
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }

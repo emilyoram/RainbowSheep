@@ -7,6 +7,18 @@
     {
       "id": "rainbowsheep:transgender_wool",
       "required": false
+    },
+    {
+      "id": "rainbowsheep:bisexual_wool",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:lesbian_wool",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:asexual_wool",
+      "required": false
     }
   ],
   "replace": false

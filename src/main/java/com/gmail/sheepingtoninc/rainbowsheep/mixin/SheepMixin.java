@@ -12,8 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.storage.loot.LootTable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -29,7 +27,6 @@ public abstract class SheepMixin implements IFlagSheep {
     @Shadow public abstract boolean isSheared();
 
     @Shadow @Final private static EntityDataAccessor<Byte> DATA_WOOL_ID;
-    private static final Logger log = LoggerFactory.getLogger(SheepMixin.class);
     private static final EntityDataAccessor<Integer> FLAG = SynchedEntityData.defineId(Sheep.class, EntityDataSerializers.INT);
 
     private static final ResourceLocation RAINBOW_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/rainbow");
@@ -37,6 +34,16 @@ public abstract class SheepMixin implements IFlagSheep {
 
     private static final ResourceLocation TRANSGENDER_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/transgender");
     private static final ResourceKey<LootTable> TRANSGENDER_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, TRANSGENDER_LOOT_LOCATION);
+
+    private static final ResourceLocation BISEXUAL_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/bisexual");
+    private static final ResourceKey<LootTable> BISEXUAL_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, BISEXUAL_LOOT_LOCATION);
+
+    private static final ResourceLocation LESBIAN_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/lesbian");
+    private static final ResourceKey<LootTable> LESBIAN_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, LESBIAN_LOOT_LOCATION);
+
+    private static final ResourceLocation ASEXUAL_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/asexual");
+    private static final ResourceKey<LootTable> ASEXUAL_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, ASEXUAL_LOOT_LOCATION);
+
 
     private SynchedEntityData getData() {
         return ((Sheep)(Object)this).getEntityData();
@@ -73,6 +80,12 @@ public abstract class SheepMixin implements IFlagSheep {
                     BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("rainbowsheep", "rainbow_wool"));
             case 2 ->
                     BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("rainbowsheep", "transgender_wool"));
+            case 3 ->
+                    BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("rainbowsheep", "bisexual_wool"));
+            case 4 ->
+                    BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("rainbowsheep", "lesbian_wool"));
+            case 5 ->
+                    BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("rainbowsheep", "asexual_wool"));
             default -> original;
         };
     }
@@ -83,6 +96,9 @@ public abstract class SheepMixin implements IFlagSheep {
             switch (this.rainbowSheep$getFlagWool()) {
                 case 1 -> cir.setReturnValue(RAINBOW_LOOT_KEY);
                 case 2 -> cir.setReturnValue(TRANSGENDER_LOOT_KEY);
+                case 3 -> cir.setReturnValue(BISEXUAL_LOOT_KEY) ;
+                case 4 -> cir.setReturnValue(LESBIAN_LOOT_KEY);
+                case 5 -> cir.setReturnValue(ASEXUAL_LOOT_KEY);
             }
         }
     }
