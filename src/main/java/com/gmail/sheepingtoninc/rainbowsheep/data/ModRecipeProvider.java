@@ -116,6 +116,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(dye)
                 .unlockedBy("has_" + name + "_dye", has(dye))
                 .group("carpet")
-                .save(output, name + "_carpet_2");
+                .save(output, "rainbowsheep:" + name + "_carpet_2");
     }
 }
