@@ -16,6 +16,7 @@ public class SheepFurLayerMixin {
     private static final ResourceLocation BISEXUAL = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_bisexual.png");
     private static final ResourceLocation LESBIAN = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_lesbian.png");
     private static final ResourceLocation ASEXUAL = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_asexual.png");
+    private static final ResourceLocation NONBINARY = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_nonbinary.png");
 
     @ModifyArg(
             method = "render",
@@ -32,6 +33,7 @@ public class SheepFurLayerMixin {
             case 3 -> BISEXUAL;
             case 4 -> LESBIAN;
             case 5 -> ASEXUAL;
+            case 6 -> NONBINARY;
             default -> original;
         };
     }

@@ -33,12 +33,14 @@ public class ModRecipeProvider extends RecipeProvider {
         buildFlagWoolRecipe(output, RainbowSheep.BISEXUAL_WOOL_ITEM.get(), RainbowSheep.BISEXUAL_DYE_ITEM.get(), "bisexual");
         buildFlagWoolRecipe(output, RainbowSheep.LESBIAN_WOOL_ITEM.get(), RainbowSheep.LESBIAN_DYE_ITEM.get(), "lesbian");
         buildFlagWoolRecipe(output, RainbowSheep.ASEXUAL_WOOL_ITEM.get(), RainbowSheep.ASEXUAL_DYE_ITEM.get(), "asexual");
+        buildFlagWoolRecipe(output, RainbowSheep.NONBINARY_WOOL_ITEM.get(), RainbowSheep.NONBINARY_DYE_ITEM.get(), "nonbinary");
 
         buildCarpetRecipe(output, RainbowSheep.RAINBOW_CARPET_ITEM.get(), RainbowSheep.RAINBOW_WOOL_ITEM.get(), RainbowSheep.RAINBOW_DYE_ITEM.get() , "rainbow");
         buildCarpetRecipe(output, RainbowSheep.TRANSGENDER_CARPET_ITEM.get(), RainbowSheep.TRANSGENDER_WOOL_ITEM.get(), RainbowSheep.TRANSGENDER_DYE_ITEM.get() , "transgender");
         buildCarpetRecipe(output, RainbowSheep.BISEXUAL_CARPET_ITEM.get(), RainbowSheep.BISEXUAL_WOOL_ITEM.get(), RainbowSheep.BISEXUAL_DYE_ITEM.get(), "bisexual");
         buildCarpetRecipe(output, RainbowSheep.LESBIAN_CARPET_ITEM.get(), RainbowSheep.LESBIAN_WOOL_ITEM.get(), RainbowSheep.LESBIAN_DYE_ITEM.get(), "lesbian");
         buildCarpetRecipe(output, RainbowSheep.ASEXUAL_CARPET_ITEM.get(), RainbowSheep.ASEXUAL_WOOL_ITEM.get(), RainbowSheep.ASEXUAL_DYE_ITEM.get() , "asexual");
+        buildCarpetRecipe(output, RainbowSheep.NONBINARY_CARPET_ITEM.get(), RainbowSheep.NONBINARY_WOOL_ITEM.get(), RainbowSheep.NONBINARY_DYE_ITEM.get() , "nonbinary");
 
         buildVanillaWoolRecipe(output, Items.WHITE_WOOL, Items.WHITE_DYE, "white");
         buildVanillaCarpetRecipe(output, Items.WHITE_CARPET, Items.WHITE_DYE, "white");

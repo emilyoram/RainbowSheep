@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/black_wool",
+    "side": "rainbowsheep:block/nonbinary_wool",
+    "top": "minecraft:block/yellow_wool"
+  }
+}

@@ -19,6 +19,10 @@
     {
       "id": "rainbowsheep:asexual_wool",
       "required": false
+    },
+    {
+      "id": "rainbowsheep:nonbinary_wool",
+      "required": false
     }
   ],
   "replace": false
