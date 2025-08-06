@@ -6,17 +6,24 @@ import net.minecraft.client.renderer.entity.layers.SheepFurLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Sheep;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(SheepFurLayer.class)
 public class SheepFurLayerMixin {
-    private static final ResourceLocation RAINBOW = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_rainbow.png");
-    private static final ResourceLocation TRANSGENDER = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_transgender.png");
-    private static final ResourceLocation BISEXUAL = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_bisexual.png");
-    private static final ResourceLocation LESBIAN = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_lesbian.png");
-    private static final ResourceLocation ASEXUAL = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_asexual.png");
-    private static final ResourceLocation NONBINARY = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_nonbinary.png");
+    @Unique
+    private static final ResourceLocation rainbowSheep$RAINBOW = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_rainbow.png");
+    @Unique
+    private static final ResourceLocation rainbowSheep$TRANSGENDER = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_transgender.png");
+    @Unique
+    private static final ResourceLocation rainbowSheep$BISEXUAL = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_bisexual.png");
+    @Unique
+    private static final ResourceLocation rainbowSheep$LESBIAN = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_lesbian.png");
+    @Unique
+    private static final ResourceLocation rainbowSheep$ASEXUAL = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_asexual.png");
+    @Unique
+    private static final ResourceLocation rainbowSheep$NONBINARY = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "textures/entity/sheep/sheep_fur_nonbinary.png");
 
     @ModifyArg(
             method = "render",
@@ -28,12 +35,12 @@ public class SheepFurLayerMixin {
     )
     private ResourceLocation modifyFurTexture(ResourceLocation original, @Local Sheep livingEntity) {
         return switch (((IFlagSheep) livingEntity).rainbowSheep$getFlagWool()) {
-            case 1 -> RAINBOW;
-            case 2 -> TRANSGENDER;
-            case 3 -> BISEXUAL;
-            case 4 -> LESBIAN;
-            case 5 -> ASEXUAL;
-            case 6 -> NONBINARY;
+            case 1 -> rainbowSheep$RAINBOW;
+            case 2 -> rainbowSheep$TRANSGENDER;
+            case 3 -> rainbowSheep$BISEXUAL;
+            case 4 -> rainbowSheep$LESBIAN;
+            case 5 -> rainbowSheep$ASEXUAL;
+            case 6 -> rainbowSheep$NONBINARY;
             default -> original;
         };
     }
