@@ -5,6 +5,7 @@ import com.gmail.sheepingtoninc.rainbowsheep.block.FlagCarpetBlock;
 import com.gmail.sheepingtoninc.rainbowsheep.block.FlagWoolBlock;
 import com.gmail.sheepingtoninc.rainbowsheep.item.RainbowDyeItem;
 import com.mojang.serialization.Codec;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -137,7 +138,7 @@ public class RainbowSheep {
     public static final DeferredItem<RainbowDyeItem> NONBINARY_DYE_ITEM = ITEMS.register("nonbinary_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.NONBINARY));
 
     public static final Supplier<AttachmentType<Integer>> FLAG = ATTACHMENT_TYPES.register(
-            "flag", () ->  AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+            "flag", () ->  AttachmentType.builder(() -> 0).serialize(Codec.INT).sync(ByteBufCodecs.INT).build()
     );
 
 
