@@ -6,7 +6,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
-@EventBusSubscriber (modid = RainbowSheep.MODID)
+@EventBusSubscriber
 public class ModCreativeModeTabs {
     @SubscribeEvent
     public static void buildContents(BuildCreativeModeTabContentsEvent event) {

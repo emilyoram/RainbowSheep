@@ -4,7 +4,6 @@ import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
 import com.gmail.sheepingtoninc.rainbowsheep.block.FlagCarpetBlock;
 import com.gmail.sheepingtoninc.rainbowsheep.block.FlagWoolBlock;
 import com.gmail.sheepingtoninc.rainbowsheep.item.RainbowDyeItem;
-import com.mojang.serialization.Codec;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -15,27 +14,18 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.function.Supplier;
 
 @Mod(RainbowSheep.MODID)
 public class RainbowSheep {
     public static final String MODID = "rainbowsheep";
 
-    public static final Logger LOGGER = LogManager.getLogger(MODID);
-
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
-
-    public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, MODID);
 
     public static final DeferredBlock<Block> RAINBOW_WOOL_BLOCK = BLOCKS.register("rainbow_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_RED)
@@ -136,14 +126,9 @@ public class RainbowSheep {
     public static final DeferredItem<RainbowDyeItem> ASEXUAL_DYE_ITEM = ITEMS.register("asexual_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.ASEXUAL));
     public static final DeferredItem<RainbowDyeItem> NONBINARY_DYE_ITEM = ITEMS.register("nonbinary_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.NONBINARY));
 
-    public static final Supplier<AttachmentType<Integer>> FLAG = ATTACHMENT_TYPES.register(
-            "flag", () ->  AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
-    );
-
 
     public RainbowSheep(IEventBus modBus, ModContainer container) {
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
-        ATTACHMENT_TYPES.register(modBus);
     }
 }
