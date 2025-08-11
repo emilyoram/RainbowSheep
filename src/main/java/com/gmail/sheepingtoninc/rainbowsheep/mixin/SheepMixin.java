@@ -8,6 +8,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.spongepowered.asm.mixin.Final;
@@ -50,10 +51,13 @@ public abstract class SheepMixin implements IFlagSheep {
 
     @Override
     public void rainbowSheep$setFlagWool(int flag) {
-        SynchedEntityData data = ((Sheep)(Object)this).getEntityData();
+        Sheep sheep = ((Sheep)(Object)this);
+        SynchedEntityData data = sheep.getEntityData();
         byte woolByte = data.get(DATA_WOOL_ID);
+        int prevFlag = sheep.getData(FLAG);
         data.set(DATA_WOOL_ID, (byte)(woolByte & 240));
-        ((Sheep)(Object)this).setData(FLAG, flag);
+        LOGGER.info("Rainbow Sheep setting flag from " + prevFlag + " to " + flag);
+        sheep.setData(FLAG, flag);
     }
 
     @Override
@@ -88,8 +92,14 @@ public abstract class SheepMixin implements IFlagSheep {
         }
     }
 
-    @Inject(method = "setColor", at = @At(value="HEAD"))
-    private void removeFlagOnColor(CallbackInfo ci) {
-        this.rainbowSheep$setFlagWool(0);
+    @Inject(method = "setColor", at = @At("HEAD"), cancellable = true)
+    private void removeFlagOnColor(DyeColor newColor, CallbackInfo ci) {
+        SynchedEntityData data = ((Sheep)(Object)this).getEntityData();
+        byte woolByte = data.get(DATA_WOOL_ID);
+        int currentColor = woolByte & 15; // lower 4 bits are color
+
+        if (newColor.getId() != currentColor && this.rainbowSheep$getFlagWool() != 0) {
+            this.rainbowSheep$setFlagWool(0);
+        }
     }
 }
