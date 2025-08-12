@@ -1,6 +1,5 @@
 package com.gmail.sheepingtoninc.rainbowsheep.item;
 
-import com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep;
 import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
 import com.gmail.sheepingtoninc.rainbowsheep.api.IFlagSheep;
 import net.minecraft.sounds.SoundEvents;
@@ -27,7 +26,6 @@ public class RainbowDyeItem extends Item {
             sheep.level().playSound(player, sheep, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
             ((IFlagSheep) sheep).rainbowSheep$setFlagWool(flagWool.ordinal());
             if (!player.level().isClientSide) {
-                RainbowSheep.LOGGER.info("Current flag int is " + sheep.getData(RainbowSheep.FLAG));
                 stack.shrink(1);
             }
 
