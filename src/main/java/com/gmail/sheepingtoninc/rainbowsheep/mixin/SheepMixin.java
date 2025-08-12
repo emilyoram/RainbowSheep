@@ -3,13 +3,12 @@ package com.gmail.sheepingtoninc.rainbowsheep.mixin;
 import com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep;
 import com.gmail.sheepingtoninc.rainbowsheep.api.IFlagSheep;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.spongepowered.asm.mixin.Final;
@@ -22,61 +21,47 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import static com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep.WOOL_FLAG;
+
 
 @Mixin(Sheep.class)
 public abstract class SheepMixin implements IFlagSheep {
     @Shadow public abstract boolean isSheared();
 
     @Shadow @Final private static EntityDataAccessor<Byte> DATA_WOOL_ID;
-    private static final EntityDataAccessor<Integer> FLAG = SynchedEntityData.defineId(Sheep.class, EntityDataSerializers.INT);
-
-    private static final ResourceLocation RAINBOW_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/rainbow");
-    private static final ResourceKey<LootTable> RAINBOW_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, RAINBOW_LOOT_LOCATION);
-
-    private static final ResourceLocation TRANSGENDER_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/transgender");
-    private static final ResourceKey<LootTable> TRANSGENDER_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, TRANSGENDER_LOOT_LOCATION);
-
-    private static final ResourceLocation BISEXUAL_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/bisexual");
-    private static final ResourceKey<LootTable> BISEXUAL_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, BISEXUAL_LOOT_LOCATION);
-
-    private static final ResourceLocation LESBIAN_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/lesbian");
-    private static final ResourceKey<LootTable> LESBIAN_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, LESBIAN_LOOT_LOCATION);
-
-    private static final ResourceLocation ASEXUAL_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/asexual");
-    private static final ResourceKey<LootTable> ASEXUAL_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, ASEXUAL_LOOT_LOCATION);
-
-    private static final ResourceLocation NONBINARY_LOOT_LOCATION = ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/nonbinary");
-    private static final ResourceKey<LootTable> NONBINARY_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, NONBINARY_LOOT_LOCATION);
-
 
     @Unique
-    private SynchedEntityData rainbowSheep$getData() {
-        return ((Sheep)(Object)this).getEntityData();
-    }
+    private static final ResourceKey<LootTable> RAINBOW_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/rainbow"));
+
+    @Unique
+    private static final ResourceKey<LootTable> TRANSGENDER_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/transgender"));
+
+    @Unique
+    private static final ResourceKey<LootTable> BISEXUAL_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/bisexual"));
+
+    @Unique
+    private static final ResourceKey<LootTable> LESBIAN_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/lesbian"));
+
+    @Unique
+    private static final ResourceKey<LootTable> ASEXUAL_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/asexual"));
+
+    @Unique
+    private static final ResourceKey<LootTable> NONBINARY_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/nonbinary"));
+
 
     @Override
     public void rainbowSheep$setFlagWool(int flag) {
-        SynchedEntityData data = this.rainbowSheep$getData();
+        Sheep sheep = ((Sheep)(Object)this);
+        SynchedEntityData data = sheep.getEntityData();
         byte woolByte = data.get(DATA_WOOL_ID);
         data.set(DATA_WOOL_ID, (byte)(woolByte & 240));
-        data.set(FLAG, flag);
+        sheep.setData(WOOL_FLAG, flag);
     }
 
     @Override
     public int rainbowSheep$getFlagWool() {
-        return rainbowSheep$getData().get(FLAG);
+        return ((Sheep)(Object) this).getData(WOOL_FLAG);
     }
-
-    @Inject(method = "defineSynchedData(Lnet/minecraft/network/syncher/SynchedEntityData$Builder;)V", at = @At("TAIL"))
-    private void defineFlagSynchedData (SynchedEntityData.Builder builder, CallbackInfo ci) {
-        builder.define(FLAG, 0);
-    }
-
-    @Inject(method = "addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
-    private void addFlagSaveData(CompoundTag compound, CallbackInfo ci) { compound.putInt("Flag", rainbowSheep$getFlagWool()); }
-
-    @Inject(method = "readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("TAIL"))
-    private void readFlagSaveData(CompoundTag compound, CallbackInfo ci) { rainbowSheep$setFlagWool(compound.getInt("Flag")); }
 
     @ModifyArg(method = "shear", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/animal/Sheep;spawnAtLocation(Lnet/minecraft/world/level/ItemLike;I)Lnet/minecraft/world/entity/item/ItemEntity;"))
     private ItemLike shearFlagWool(ItemLike original) {
@@ -105,8 +90,10 @@ public abstract class SheepMixin implements IFlagSheep {
         }
     }
 
-    @Inject(method = "setColor", at = @At(value="HEAD"))
-    private void removeFlagOnColor(CallbackInfo ci) {
-        this.rainbowSheep$setFlagWool(0);
+    @Inject(method = "setColor", at = @At("HEAD"))
+    private void removeFlagOnColor(DyeColor newColor, CallbackInfo ci) {
+        if (!((Sheep)(Object)this).level().isClientSide && ((Sheep)(Object)this).tickCount > 0) { //setColor is called when loading sheep, this ensures that first call does not remove flag wool
+            this.rainbowSheep$setFlagWool(0);
+        }
     }
 }

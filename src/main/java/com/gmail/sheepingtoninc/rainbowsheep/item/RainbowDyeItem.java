@@ -24,8 +24,8 @@ public class RainbowDyeItem extends Item {
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if (target instanceof Sheep sheep && sheep.isAlive() && !sheep.isSheared() && this.flagWool.ordinal() != ((IFlagSheep) sheep).rainbowSheep$getFlagWool()) {
             sheep.level().playSound(player, sheep, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
+            ((IFlagSheep) sheep).rainbowSheep$setFlagWool(flagWool.ordinal());
             if (!player.level().isClientSide) {
-                ((IFlagSheep) sheep).rainbowSheep$setFlagWool(flagWool.ordinal());
                 stack.shrink(1);
             }
 
