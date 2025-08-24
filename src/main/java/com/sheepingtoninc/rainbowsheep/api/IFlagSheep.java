@@ -1,4 +1,4 @@
-package com.gmail.sheepingtoninc.rainbowsheep.api;
+package com.sheepingtoninc.rainbowsheep.api;
 
 public interface IFlagSheep {
 

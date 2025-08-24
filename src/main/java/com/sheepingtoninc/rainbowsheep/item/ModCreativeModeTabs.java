@@ -1,6 +1,6 @@
-package com.gmail.sheepingtoninc.rainbowsheep.item;
+package com.sheepingtoninc.rainbowsheep.item;
 
-import com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep;
+import com.sheepingtoninc.rainbowsheep.RainbowSheep;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

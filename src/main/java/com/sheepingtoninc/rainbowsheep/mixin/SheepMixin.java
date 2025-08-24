@@ -1,7 +1,7 @@
-package com.gmail.sheepingtoninc.rainbowsheep.mixin;
+package com.sheepingtoninc.rainbowsheep.mixin;
 
-import com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep;
-import com.gmail.sheepingtoninc.rainbowsheep.api.IFlagSheep;
+import com.sheepingtoninc.rainbowsheep.RainbowSheep;
+import com.sheepingtoninc.rainbowsheep.api.IFlagSheep;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep.WOOL_FLAG;
+import static com.sheepingtoninc.rainbowsheep.RainbowSheep.WOOL_FLAG;
 
 
 @Mixin(Sheep.class)

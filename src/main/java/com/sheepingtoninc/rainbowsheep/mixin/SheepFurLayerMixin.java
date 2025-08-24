@@ -1,6 +1,6 @@
-package com.gmail.sheepingtoninc.rainbowsheep.mixin;
+package com.sheepingtoninc.rainbowsheep.mixin;
 
-import com.gmail.sheepingtoninc.rainbowsheep.api.IFlagSheep;
+import com.sheepingtoninc.rainbowsheep.api.IFlagSheep;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.client.renderer.entity.layers.SheepFurLayer;
 import net.minecraft.resources.ResourceLocation;

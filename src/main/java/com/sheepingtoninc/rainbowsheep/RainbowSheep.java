@@ -1,9 +1,9 @@
-package com.gmail.sheepingtoninc.rainbowsheep;
+package com.sheepingtoninc.rainbowsheep;
 
-import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
-import com.gmail.sheepingtoninc.rainbowsheep.block.FlagCarpetBlock;
-import com.gmail.sheepingtoninc.rainbowsheep.block.FlagWoolBlock;
-import com.gmail.sheepingtoninc.rainbowsheep.item.RainbowDyeItem;
+import com.sheepingtoninc.rainbowsheep.api.FlagWool;
+import com.sheepingtoninc.rainbowsheep.block.FlagCarpetBlock;
+import com.sheepingtoninc.rainbowsheep.block.FlagWoolBlock;
+import com.sheepingtoninc.rainbowsheep.item.RainbowDyeItem;
 import com.mojang.serialization.Codec;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.world.item.BlockItem;
