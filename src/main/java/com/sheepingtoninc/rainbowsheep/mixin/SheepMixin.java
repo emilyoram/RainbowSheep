@@ -10,9 +10,12 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -28,7 +31,11 @@ import static com.sheepingtoninc.rainbowsheep.RainbowSheep.WOOL_FLAG;
 
 
 @Mixin(Sheep.class)
-public abstract class SheepMixin implements IFlagSheep {
+public abstract class SheepMixin extends Animal implements IFlagSheep {
+    protected SheepMixin(EntityType<? extends Animal> entityType, Level level) {
+        super(entityType, level);
+    }
+
     @Shadow public abstract boolean isSheared();
 
     @Shadow @Final private static EntityDataAccessor<Byte> DATA_WOOL_ID;
@@ -54,16 +61,15 @@ public abstract class SheepMixin implements IFlagSheep {
 
     @Override
     public void rainbowSheep$setFlagWool(int flag) {
-        Sheep sheep = ((Sheep)(Object)this);
-        SynchedEntityData data = sheep.getEntityData();
+        SynchedEntityData data = this.getEntityData();
         byte woolByte = data.get(DATA_WOOL_ID);
         data.set(DATA_WOOL_ID, (byte)(woolByte & 240));
-        sheep.setData(WOOL_FLAG, flag);
+        this.setData(WOOL_FLAG, flag);
     }
 
     @Override
     public int rainbowSheep$getFlagWool() {
-        return ((Sheep)(Object) this).getData(WOOL_FLAG);
+        return this.getData(WOOL_FLAG);
     }
 
     @ModifyArg(method = "shear", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/animal/Sheep;spawnAtLocation(Lnet/minecraft/world/level/ItemLike;I)Lnet/minecraft/world/entity/item/ItemEntity;"))
@@ -118,7 +124,7 @@ public abstract class SheepMixin implements IFlagSheep {
 
     @Inject(method = "setColor", at = @At("HEAD"))
     private void removeFlagOnColor(DyeColor newColor, CallbackInfo ci) {
-        if (!((Sheep)(Object)this).level().isClientSide && ((Sheep)(Object)this).tickCount > 0) {
+        if (!this.level().isClientSide && this.tickCount > 0) {
             this.rainbowSheep$setFlagWool(0);
         }
     }
