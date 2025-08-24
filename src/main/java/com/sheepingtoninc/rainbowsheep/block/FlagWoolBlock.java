@@ -1,4 +1,4 @@
-package com.gmail.sheepingtoninc.rainbowsheep.block;
+package com.sheepingtoninc.rainbowsheep.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,7 +1,7 @@
-package com.gmail.sheepingtoninc.rainbowsheep.mixin;
+package com.sheepingtoninc.rainbowsheep.mixin;
 
-import com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep;
-import com.gmail.sheepingtoninc.rainbowsheep.api.IFlagSheep;
+import com.sheepingtoninc.rainbowsheep.RainbowSheep;
+import com.sheepingtoninc.rainbowsheep.api.IFlagSheep;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep.WOOL_FLAG;
+import static com.sheepingtoninc.rainbowsheep.RainbowSheep.WOOL_FLAG;
 
 
 @Mixin(Sheep.class)
@@ -92,7 +92,7 @@ public abstract class SheepMixin implements IFlagSheep {
 
     @Inject(method = "setColor", at = @At("HEAD"))
     private void removeFlagOnColor(DyeColor newColor, CallbackInfo ci) {
-        if (!((Sheep)(Object)this).level().isClientSide && ((Sheep)(Object)this).tickCount > 0) { //setColor is called when loading sheep, this ensures that first call does not remove flag wool
+        if (!((Sheep)(Object)this).level().isClientSide && ((Sheep)(Object)this).tickCount > 0) {
             this.rainbowSheep$setFlagWool(0);
         }
     }

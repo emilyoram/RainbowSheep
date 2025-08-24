@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.gmail.sheepingtoninc.rainbowsheep.mixin",
+  "package": "com.sheepingtoninc.rainbowsheep.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "DyeItemMixin",

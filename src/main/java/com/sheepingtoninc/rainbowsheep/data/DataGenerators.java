@@ -1,6 +1,6 @@
-package com.gmail.sheepingtoninc.rainbowsheep.data;
+package com.sheepingtoninc.rainbowsheep.data;
 
-import com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep;
+import com.sheepingtoninc.rainbowsheep.RainbowSheep;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;

@@ -1,4 +1,4 @@
-package com.gmail.sheepingtoninc.rainbowsheep.block;
+package com.sheepingtoninc.rainbowsheep.block;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;

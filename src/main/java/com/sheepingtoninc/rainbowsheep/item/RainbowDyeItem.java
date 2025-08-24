@@ -1,7 +1,7 @@
-package com.gmail.sheepingtoninc.rainbowsheep.item;
+package com.sheepingtoninc.rainbowsheep.item;
 
-import com.gmail.sheepingtoninc.rainbowsheep.api.FlagWool;
-import com.gmail.sheepingtoninc.rainbowsheep.api.IFlagSheep;
+import com.sheepingtoninc.rainbowsheep.api.FlagWool;
+import com.sheepingtoninc.rainbowsheep.api.IFlagSheep;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
