@@ -40,6 +40,8 @@ public abstract class SheepMixin extends Animal implements IFlagSheep {
 
     @Shadow @Final private static EntityDataAccessor<Byte> DATA_WOOL_ID;
 
+    @Shadow public abstract DyeColor getColor();
+
     @Unique
     private static final ResourceKey<LootTable> RAINBOW_LOOT_KEY = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath("rainbowsheep", "entities/sheep/rainbow"));
 
@@ -110,7 +112,7 @@ public abstract class SheepMixin extends Animal implements IFlagSheep {
                 if (flag1 != 0) {
                     ((IFlagSheep) sheep).rainbowSheep$setFlagWool(flag1);
                 } else {
-                    sheep.setColor(((Sheep)(Object)this).getColor());
+                    sheep.setColor(this.getColor());
                 }
             } else {
                 if (flag2 != 0) {
