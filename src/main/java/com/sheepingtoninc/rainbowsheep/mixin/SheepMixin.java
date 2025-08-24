@@ -1,5 +1,6 @@
 package com.sheepingtoninc.rainbowsheep.mixin;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import com.sheepingtoninc.rainbowsheep.RainbowSheep;
 import com.sheepingtoninc.rainbowsheep.api.IFlagSheep;
 import net.minecraft.core.registries.Registries;
@@ -7,6 +8,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.ItemLike;
@@ -88,6 +91,18 @@ public abstract class SheepMixin implements IFlagSheep {
                 case 6 -> cir.setReturnValue(NONBINARY_LOOT_KEY);
             }
         }
+    }
+
+    @Inject(method = "getBreedOffspring(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/AgeableMob;)Lnet/minecraft/world/entity/animal/Sheep;",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/animal/Sheep;setColor(Lnet/minecraft/world/item/DyeColor;)V", shift = At.Shift.AFTER))
+    private void getOffspringFlag(ServerLevel level, AgeableMob otherParent, CallbackInfoReturnable<Sheep> cir, @Local(name = "sheep") Sheep sheep) {
+        int flag1 = rainbowSheep$getFlagWool();
+        int flag2 = ((IFlagSheep) otherParent).rainbowSheep$getFlagWool();
+        int offspringFlag = level.random.nextBoolean() ? flag1 : flag2;
+        if (offspringFlag != 0) {
+            ((IFlagSheep) sheep).rainbowSheep$setFlagWool(offspringFlag);
+        }
+        // TODO: Currently while this works for breeding two flag sheep together or two non-flag sheep, weird stuff happens when you breed a flag and non-flag sheep together
     }
 
     @Inject(method = "setColor", at = @At("HEAD"))
