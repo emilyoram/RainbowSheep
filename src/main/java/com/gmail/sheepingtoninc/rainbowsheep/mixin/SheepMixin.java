@@ -21,7 +21,6 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep.LOGGER;
 import static com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep.WOOL_FLAG;
 
 
@@ -79,7 +78,6 @@ public abstract class SheepMixin implements IFlagSheep {
 
     @Inject(method = "getDefaultLootTable", at = @At(value = "HEAD"), cancellable = true)
     protected void setFlagLootTable(CallbackInfoReturnable<ResourceKey<LootTable>> cir) {
-        LOGGER.info("Setting flag loot table");
         if (!isSheared() && rainbowSheep$getFlagWool() != 0) {
             switch (rainbowSheep$getFlagWool()) {
                 case 1 -> cir.setReturnValue(RAINBOW_LOOT_KEY);
