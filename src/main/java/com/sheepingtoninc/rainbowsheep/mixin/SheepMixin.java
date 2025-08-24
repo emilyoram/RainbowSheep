@@ -98,11 +98,22 @@ public abstract class SheepMixin implements IFlagSheep {
     private void getOffspringFlag(ServerLevel level, AgeableMob otherParent, CallbackInfoReturnable<Sheep> cir, @Local(name = "sheep") Sheep sheep) {
         int flag1 = rainbowSheep$getFlagWool();
         int flag2 = ((IFlagSheep) otherParent).rainbowSheep$getFlagWool();
-        int offspringFlag = level.random.nextBoolean() ? flag1 : flag2;
-        if (offspringFlag != 0) {
-            ((IFlagSheep) sheep).rainbowSheep$setFlagWool(offspringFlag);
+        if (flag1 != 0 || flag2 != 0) {
+            boolean inheritFromThisParent = level.random.nextBoolean();
+            if (inheritFromThisParent) {
+                if (flag1 != 0) {
+                    ((IFlagSheep) sheep).rainbowSheep$setFlagWool(flag1);
+                } else {
+                    sheep.setColor(((Sheep)(Object)this).getColor());
+                }
+            } else {
+                if (flag2 != 0) {
+                    ((IFlagSheep) sheep).rainbowSheep$setFlagWool(flag2);
+                } else {
+                    sheep.setColor(((Sheep)otherParent).getColor());
+                }
+            }
         }
-        // TODO: Currently while this works for breeding two flag sheep together or two non-flag sheep, weird stuff happens when you breed a flag and non-flag sheep together
     }
 
     @Inject(method = "setColor", at = @At("HEAD"))
