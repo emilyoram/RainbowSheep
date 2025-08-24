@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import static com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep.LOGGER;
 import static com.gmail.sheepingtoninc.rainbowsheep.RainbowSheep.WOOL_FLAG;
 
 
@@ -78,6 +79,7 @@ public abstract class SheepMixin implements IFlagSheep {
 
     @Inject(method = "getDefaultLootTable", at = @At(value = "HEAD"), cancellable = true)
     protected void setFlagLootTable(CallbackInfoReturnable<ResourceKey<LootTable>> cir) {
+        LOGGER.info("Setting flag loot table");
         if (!isSheared() && rainbowSheep$getFlagWool() != 0) {
             switch (rainbowSheep$getFlagWool()) {
                 case 1 -> cir.setReturnValue(RAINBOW_LOOT_KEY);
@@ -92,7 +94,7 @@ public abstract class SheepMixin implements IFlagSheep {
 
     @Inject(method = "setColor", at = @At("HEAD"))
     private void removeFlagOnColor(DyeColor newColor, CallbackInfo ci) {
-        if (!((Sheep)(Object)this).level().isClientSide && ((Sheep)(Object)this).tickCount > 0) { //setColor is called when loading sheep, this ensures that first call does not remove flag wool
+        if (!((Sheep)(Object)this).level().isClientSide && ((Sheep)(Object)this).tickCount > 0) {
             this.rainbowSheep$setFlagWool(0);
         }
     }

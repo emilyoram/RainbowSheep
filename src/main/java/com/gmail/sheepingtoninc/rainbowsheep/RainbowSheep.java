@@ -138,7 +138,7 @@ public class RainbowSheep {
     public static final DeferredItem<RainbowDyeItem> NONBINARY_DYE_ITEM = ITEMS.register("nonbinary_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.NONBINARY));
 
     public static final Supplier<AttachmentType<Integer>> WOOL_FLAG = ATTACHMENT_TYPES.register(
-            "flag", () ->  AttachmentType.builder(() -> 0).serialize(Codec.INT).sync(ByteBufCodecs.INT).build()
+            "wool_flag", () ->  AttachmentType.builder(() -> 0).serialize(Codec.INT).sync(ByteBufCodecs.INT).build()
     );
 
 

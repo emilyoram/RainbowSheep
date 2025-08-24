@@ -16,10 +16,10 @@ public class DyeItemMixin {
     @ModifyExpressionValue(
             method = "interactLivingEntity",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/animal/Sheep;getColor()Lnet/minecraft/world/item/DyeColor;"))
-            private DyeColor convinceDyeFlagIsDifferentToWhite(DyeColor original, @Local LivingEntity target) {
-                if (target instanceof Sheep sheep && original == DyeColor.WHITE && ((IFlagSheep) sheep).rainbowSheep$getFlagWool() != 0) {
-                    return DyeColor.GRAY;
-                }
-                return original;
+    private DyeColor rainbowSheep$convinceDyeFlagIsDifferentToWhite(DyeColor original, @Local LivingEntity target) {
+        if (target instanceof Sheep sheep && original == DyeColor.WHITE && ((IFlagSheep) sheep).rainbowSheep$getFlagWool() != 0) {
+            return DyeColor.GRAY;
+        }
+        return original;
     }
 }
