@@ -1,15 +1,21 @@
 package com.sheepingtoninc.rainbowsheep;
 
 import com.sheepingtoninc.rainbowsheep.api.FlagWool;
+import com.sheepingtoninc.rainbowsheep.block.FlagBedBlock;
 import com.sheepingtoninc.rainbowsheep.block.FlagCarpetBlock;
 import com.sheepingtoninc.rainbowsheep.block.FlagWoolBlock;
+import com.sheepingtoninc.rainbowsheep.blockentity.FlagBedBlockEntity;
 import com.sheepingtoninc.rainbowsheep.item.RainbowDyeItem;
 import com.mojang.serialization.Codec;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.world.item.BedItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -37,6 +43,8 @@ public class RainbowSheep {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
 
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, MODID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
+            DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MODID);
 
     public static final DeferredBlock<Block> RAINBOW_WOOL_BLOCK = BLOCKS.register("rainbow_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_RED)
@@ -46,8 +54,14 @@ public class RainbowSheep {
             .ignitedByLava()
     ));
     public static final DeferredBlock<Block> RAINBOW_CARPET_BLOCK = BLOCKS.register("rainbow_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_LIGHT_BLUE)
+            .mapColor(MapColor.COLOR_RED)
             .strength(0.1F)
+            .sound(SoundType.WOOL)
+            .ignitedByLava()
+    ));
+    public static final DeferredBlock<Block> RAINBOW_BED_BLOCK = BLOCKS.register("rainbow_bed", registryName -> new FlagBedBlock(FlagWool.RAINBOW, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED)
+            .instrument(NoteBlockInstrument.GUITAR)
+            .strength(0.8F)
             .sound(SoundType.WOOL)
             .ignitedByLava()
     ));
@@ -117,6 +131,15 @@ public class RainbowSheep {
             .ignitedByLava()
     ));
 
+    public static final Supplier<BlockEntityType<FlagBedBlockEntity>> FLAG_BED_ENTITY =
+            BLOCK_ENTITY_TYPES.register(
+                    "flag_bed",
+                    () -> BlockEntityType.Builder.of(
+                            FlagBedBlockEntity::new,
+                            RAINBOW_BED_BLOCK.get()
+                    ).build(null)
+            );
+
 
     public static final Supplier<BlockItem> RAINBOW_WOOL_ITEM = ITEMS.registerSimpleBlockItem("rainbow_wool", RAINBOW_WOOL_BLOCK);
     public static final Supplier<BlockItem> RAINBOW_CARPET_ITEM = ITEMS.registerSimpleBlockItem("rainbow_carpet", RAINBOW_CARPET_BLOCK);
@@ -136,6 +159,7 @@ public class RainbowSheep {
     public static final DeferredItem<RainbowDyeItem> LESBIAN_DYE_ITEM = ITEMS.register("lesbian_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.LESBIAN));
     public static final DeferredItem<RainbowDyeItem> ASEXUAL_DYE_ITEM = ITEMS.register("asexual_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.ASEXUAL));
     public static final DeferredItem<RainbowDyeItem> NONBINARY_DYE_ITEM = ITEMS.register("nonbinary_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.NONBINARY));
+    public static final DeferredItem<BedItem> RAINBOW_BED_ITEM = ITEMS.register("rainbow_bed", () -> new BedItem(RAINBOW_BED_BLOCK.get(), new Item.Properties()));
 
     public static final Supplier<AttachmentType<Integer>> WOOL_FLAG = ATTACHMENT_TYPES.register(
             "wool_flag", () ->  AttachmentType.builder(() -> 0).serialize(Codec.INT).sync(ByteBufCodecs.INT).build()
@@ -146,5 +170,6 @@ public class RainbowSheep {
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
         ATTACHMENT_TYPES.register(modBus);
+        BLOCK_ENTITY_TYPES.register(modBus);
     }
 }
