@@ -1,0 +1,29 @@
+{
+  "values": [
+    {
+      "id": "rainbowsheep:rainbow_bed",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:transgender_bed",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:bisexual_bed",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:lesbian_bed",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:asexual_bed",
+      "required": false
+    },
+    {
+      "id": "rainbowsheep:nonbinary_bed",
+      "required": false
+    }
+  ],
+  "replace": false
+}
