@@ -37,10 +37,14 @@ public class FlagBedRenderer implements BlockEntityRenderer<FlagBedBlockEntity> 
         this.footRoot = context.bakeLayer(ModelLayers.BED_FOOT);
     }
 
+    private Material getFlagMaterial(FlagBedBlockEntity blockEntity) {
+        ResourceLocation sheet = ResourceLocation.withDefaultNamespace("textures/atlas/beds.png");
+        return new Material(sheet, ResourceLocation.fromNamespaceAndPath(RainbowSheep.MODID, "rainbowsheep_rainbow"));
+    }
+
     @Override
     public void render(FlagBedBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
-        ResourceLocation sheet = ResourceLocation.withDefaultNamespace("textures/atlas/beds.png");
-        Material material = new Material(sheet, ResourceLocation.fromNamespaceAndPath(RainbowSheep.MODID, "rainbowsheep_rainbow"));
+        Material material = getFlagMaterial(blockEntity);
         Level level = blockEntity.getLevel();
         if (level != null) {
             BlockState blockstate = blockEntity.getBlockState();
