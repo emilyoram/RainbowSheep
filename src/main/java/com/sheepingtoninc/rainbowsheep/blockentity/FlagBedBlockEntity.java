@@ -24,7 +24,4 @@ public class FlagBedBlockEntity extends BlockEntity {
         return this.flag;
     }
 
-    public void setFlag(FlagWool flag) {
-        this.flag = flag;
-    }
 }
