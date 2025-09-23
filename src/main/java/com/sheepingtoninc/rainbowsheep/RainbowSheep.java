@@ -14,6 +14,7 @@ import net.minecraft.world.item.BedItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -46,97 +47,54 @@ public class RainbowSheep {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
             DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MODID);
 
-    public static final DeferredBlock<Block> RAINBOW_WOOL_BLOCK = BLOCKS.register("rainbow_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_RED)
-            .instrument(NoteBlockInstrument.GUITAR)
-            .strength(0.8F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> RAINBOW_CARPET_BLOCK = BLOCKS.register("rainbow_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_RED)
-            .strength(0.1F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> RAINBOW_BED_BLOCK = BLOCKS.register("rainbow_bed", registryName -> new FlagBedBlock(FlagWool.RAINBOW, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED)
-            .instrument(NoteBlockInstrument.GUITAR)
-            .strength(0.8F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> TRANSGENDER_WOOL_BLOCK = BLOCKS.register("transgender_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_LIGHT_BLUE)
-            .instrument(NoteBlockInstrument.GUITAR)
-            .strength(0.8F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> TRANSGENDER_CARPET_BLOCK = BLOCKS.register("transgender_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_LIGHT_BLUE)
-            .strength(0.1F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> BISEXUAL_WOOL_BLOCK = BLOCKS.register("bisexual_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_MAGENTA)
-            .instrument(NoteBlockInstrument.GUITAR)
-            .strength(0.8F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> BISEXUAL_CARPET_BLOCK = BLOCKS.register("bisexual_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_MAGENTA)
-            .strength(0.1F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> LESBIAN_WOOL_BLOCK = BLOCKS.register("lesbian_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_ORANGE)
-            .instrument(NoteBlockInstrument.GUITAR)
-            .strength(0.8F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> LESBIAN_CARPET_BLOCK = BLOCKS.register("lesbian_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_ORANGE)
-            .strength(0.1F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> ASEXUAL_WOOL_BLOCK = BLOCKS.register("asexual_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_ORANGE)
-            .instrument(NoteBlockInstrument.GUITAR)
-            .strength(0.8F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> ASEXUAL_CARPET_BLOCK = BLOCKS.register("asexual_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_ORANGE)
-            .strength(0.1F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> NONBINARY_WOOL_BLOCK = BLOCKS.register("nonbinary_wool", registryName -> new FlagWoolBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_YELLOW)
-            .instrument(NoteBlockInstrument.GUITAR)
-            .strength(0.8F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
-    public static final DeferredBlock<Block> NONBINARY_CARPET_BLOCK = BLOCKS.register("nonbinary_carpet", registryName -> new FlagCarpetBlock(BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_YELLOW)
-            .strength(0.1F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
-    ));
+    public static final DeferredBlock<Block> RAINBOW_WOOL_BLOCK = BLOCKS.register("rainbow_wool", registryName ->
+            new FlagWoolBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_WOOL)));
+    public static final DeferredBlock<Block> RAINBOW_CARPET_BLOCK = BLOCKS.register("rainbow_carpet", registryName ->
+            new FlagCarpetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_CARPET)));
+    public static final DeferredBlock<Block> RAINBOW_BED_BLOCK = BLOCKS.register("rainbow_bed", registryName ->
+            new FlagBedBlock(FlagWool.RAINBOW, BlockBehaviour.Properties.ofFullCopy(Blocks.RED_BED)));
+
+    public static final DeferredBlock<Block> TRANSGENDER_WOOL_BLOCK = BLOCKS.register("transgender_wool", registryName ->
+            new FlagWoolBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LIGHT_BLUE_WOOL)));
+    public static final DeferredBlock<Block> TRANSGENDER_CARPET_BLOCK = BLOCKS.register("transgender_carpet", registryName ->
+            new FlagCarpetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LIGHT_BLUE_CARPET)));
+    public static final DeferredBlock<Block> TRANSGENDER_BED_BLOCK = BLOCKS.register("transgender_bed", registryName ->
+            new FlagBedBlock(FlagWool.TRANSGENDER, BlockBehaviour.Properties.ofFullCopy(Blocks.LIGHT_BLUE_BED)));
+
+    public static final DeferredBlock<Block> BISEXUAL_WOOL_BLOCK = BLOCKS.register("bisexual_wool", registryName ->
+            new FlagWoolBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MAGENTA_WOOL)));
+    public static final DeferredBlock<Block> BISEXUAL_CARPET_BLOCK = BLOCKS.register("bisexual_carpet", registryName ->
+            new FlagCarpetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MAGENTA_CARPET)));
+    public static final DeferredBlock<Block> BISEXUAL_BED_BLOCK = BLOCKS.register("bisexual_bed", registryName ->
+            new FlagBedBlock(FlagWool.BISEXUAL, BlockBehaviour.Properties.ofFullCopy(Blocks.MAGENTA_BED)));
+
+    public static final DeferredBlock<Block> LESBIAN_WOOL_BLOCK = BLOCKS.register("lesbian_wool", registryName ->
+            new FlagWoolBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ORANGE_WOOL)));
+    public static final DeferredBlock<Block> LESBIAN_CARPET_BLOCK = BLOCKS.register("lesbian_carpet", registryName ->
+            new FlagCarpetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ORANGE_CARPET)));
+    public static final DeferredBlock<Block> LESBIAN_BED_BLOCK = BLOCKS.register("lesbian_bed", registryName ->
+            new FlagBedBlock(FlagWool.LESBIAN, BlockBehaviour.Properties.ofFullCopy(Blocks.ORANGE_BED)));
+
+    public static final DeferredBlock<Block> ASEXUAL_WOOL_BLOCK = BLOCKS.register("asexual_wool", registryName ->
+            new FlagWoolBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACK_WOOL)));
+    public static final DeferredBlock<Block> ASEXUAL_CARPET_BLOCK = BLOCKS.register("asexual_carpet", registryName ->
+            new FlagCarpetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BLACK_CARPET)));
+    public static final DeferredBlock<Block> ASEXUAL_BED_BLOCK = BLOCKS.register("asexual_bed", registryName ->
+            new FlagBedBlock(FlagWool.ASEXUAL, BlockBehaviour.Properties.ofFullCopy(Blocks.BLACK_BED)));
+
+    public static final DeferredBlock<Block> NONBINARY_WOOL_BLOCK = BLOCKS.register("nonbinary_wool", registryName ->
+            new FlagWoolBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.YELLOW_WOOL)));
+    public static final DeferredBlock<Block> NONBINARY_CARPET_BLOCK = BLOCKS.register("nonbinary_carpet", registryName ->
+            new FlagCarpetBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.YELLOW_CARPET)));
+    public static final DeferredBlock<Block> NONBINARY_BED_BLOCK = BLOCKS.register("nonbinary_bed", registryName ->
+            new FlagBedBlock(FlagWool.NONBINARY, BlockBehaviour.Properties.ofFullCopy(Blocks.YELLOW_BED)));
 
     public static final Supplier<BlockEntityType<FlagBedBlockEntity>> FLAG_BED_ENTITY =
             BLOCK_ENTITY_TYPES.register(
                     "flag_bed",
                     () -> BlockEntityType.Builder.of(
                             FlagBedBlockEntity::new,
-                            RAINBOW_BED_BLOCK.get()
+                            RAINBOW_BED_BLOCK.get(), TRANSGENDER_BED_BLOCK.get(), BISEXUAL_BED_BLOCK.get(), LESBIAN_BED_BLOCK.get(), ASEXUAL_BED_BLOCK.get(), NONBINARY_BED_BLOCK.get()
                     ).build(null)
             );
 
@@ -160,6 +118,11 @@ public class RainbowSheep {
     public static final DeferredItem<RainbowDyeItem> ASEXUAL_DYE_ITEM = ITEMS.register("asexual_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.ASEXUAL));
     public static final DeferredItem<RainbowDyeItem> NONBINARY_DYE_ITEM = ITEMS.register("nonbinary_dye", () -> new RainbowDyeItem(new Item.Properties(), FlagWool.NONBINARY));
     public static final DeferredItem<BedItem> RAINBOW_BED_ITEM = ITEMS.register("rainbow_bed", () -> new BedItem(RAINBOW_BED_BLOCK.get(), new Item.Properties()));
+    public static final DeferredItem<BedItem> TRANSGENDER_BED_ITEM = ITEMS.register("transgender_bed", () -> new BedItem(TRANSGENDER_BED_BLOCK.get(), new Item.Properties()));
+    public static final DeferredItem<BedItem> BISEXUAL_BED_ITEM = ITEMS.register("bisexual_bed", () -> new BedItem(BISEXUAL_BED_BLOCK.get(), new Item.Properties()));
+    public static final DeferredItem<BedItem> LESBIAN_BED_ITEM = ITEMS.register("lesbian_bed", () -> new BedItem(LESBIAN_BED_BLOCK.get(), new Item.Properties()));
+    public static final DeferredItem<BedItem> ASEXUAL_BED_ITEM = ITEMS.register("asexual_bed", () -> new BedItem(ASEXUAL_BED_BLOCK.get(), new Item.Properties()));
+    public static final DeferredItem<BedItem> NONBINARY_BED_ITEM = ITEMS.register("nonbinary_bed", () -> new BedItem(NONBINARY_BED_BLOCK.get(), new Item.Properties()));
 
     public static final Supplier<AttachmentType<Integer>> WOOL_FLAG = ATTACHMENT_TYPES.register(
             "wool_flag", () ->  AttachmentType.builder(() -> 0).serialize(Codec.INT).sync(ByteBufCodecs.INT).build()

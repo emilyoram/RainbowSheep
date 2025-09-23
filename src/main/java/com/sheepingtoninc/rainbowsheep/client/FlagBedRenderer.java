@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.sheepingtoninc.rainbowsheep.RainbowSheep;
-import com.sheepingtoninc.rainbowsheep.api.FlagWool;
 import com.sheepingtoninc.rainbowsheep.blockentity.FlagBedBlockEntity;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.geom.ModelPart;
@@ -26,6 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import static net.minecraft.client.renderer.Sheets.BED_SHEET;
 
 @OnlyIn(Dist.CLIENT)
 public class FlagBedRenderer implements BlockEntityRenderer<FlagBedBlockEntity> {
@@ -38,8 +38,16 @@ public class FlagBedRenderer implements BlockEntityRenderer<FlagBedBlockEntity> 
     }
 
     private Material getFlagMaterial(FlagBedBlockEntity blockEntity) {
-        ResourceLocation sheet = ResourceLocation.withDefaultNamespace("textures/atlas/beds.png");
-        return new Material(sheet, ResourceLocation.fromNamespaceAndPath(RainbowSheep.MODID, "rainbowsheep_rainbow"));
+        String path = "rainbow";
+        switch(blockEntity.getFlag()) {
+            case RAINBOW -> path = "rainbow";
+            case TRANSGENDER ->  path = "transgender";
+            case BISEXUAL -> path = "bisexual";
+            case LESBIAN -> path = "lesbian";
+            case ASEXUAL ->  path = "asexual";
+            case NONBINARY ->  path = "nonbinary";
+        }
+        return new Material(BED_SHEET, ResourceLocation.fromNamespaceAndPath(RainbowSheep.MODID, "entity/bed/" + path));
     }
 
     @Override

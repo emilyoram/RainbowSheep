@@ -19,6 +19,6 @@ public class RainbowSheepClient {
 
     @SubscribeEvent
     public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
-        event.registerItem(new FlagBedItemExtension(), RainbowSheep.RAINBOW_BED_ITEM);
+        event.registerItem(new FlagBedItemExtension(), RainbowSheep.RAINBOW_BED_ITEM, RainbowSheep.TRANSGENDER_BED_ITEM, RainbowSheep.BISEXUAL_BED_ITEM, RainbowSheep.LESBIAN_BED_ITEM, RainbowSheep.ASEXUAL_BED_ITEM, RainbowSheep.NONBINARY_BED_ITEM);
     }
 }

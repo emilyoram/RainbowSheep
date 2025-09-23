@@ -5,7 +5,6 @@ import com.sheepingtoninc.rainbowsheep.blockentity.FlagBedBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -21,11 +20,6 @@ public class FlagBedBlock extends BedBlock {
         return this.flag;
     }
 
-//    @Override
-//    public RenderShape getRenderShape(BlockState pState) {
-//        return RenderShape.MODEL;
-//    }
-//
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new FlagBedBlockEntity(pos, state);

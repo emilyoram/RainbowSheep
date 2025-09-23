@@ -26,6 +26,15 @@ public class ModCreativeModeTabs {
             event.accept(RainbowSheep.NONBINARY_CARPET_ITEM.get());
         }
 
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS || event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
+            event.accept(RainbowSheep.RAINBOW_BED_ITEM.get());
+            event.accept(RainbowSheep.TRANSGENDER_BED_ITEM.get());
+            event.accept(RainbowSheep.BISEXUAL_BED_ITEM.get());
+            event.accept(RainbowSheep.LESBIAN_BED_ITEM.get());
+            event.accept(RainbowSheep.ASEXUAL_BED_ITEM.get());
+            event.accept(RainbowSheep.NONBINARY_BED_ITEM.get());
+        }
+
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
            event.accept(RainbowSheep.RAINBOW_DYE_ITEM.get());
            event.accept(RainbowSheep.TRANSGENDER_DYE_ITEM.get());
