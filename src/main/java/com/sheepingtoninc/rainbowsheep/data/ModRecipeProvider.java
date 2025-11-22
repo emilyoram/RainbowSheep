@@ -117,7 +117,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(dye)
                 .unlockedBy("has_" + name + "_dye", has(dye))
                 .group("wool")
-                .save(output);
+                .save(output, "rainbowsheep:" + name + "_wool");
     }
 
     protected void buildVanillaCarpetRecipe(RecipeOutput output, ItemLike carpet, ItemLike dye, String name) {
@@ -126,7 +126,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(dye)
                 .unlockedBy("has_" + name + "_dye", has(dye))
                 .group("carpet")
-                .save(output);
+                .save(output, "rainbowsheep:" + name + "_carpet");
     }
 
     protected void buildVanillaBedRecipe(RecipeOutput output, ItemLike bed, ItemLike dye, String name) {
@@ -135,7 +135,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(dye)
                 .unlockedBy("has_" + name + "_dye", has(dye))
                 .group("beds")
-                .save(output);
+                .save(output, "rainbowsheep:" + name + "_bed");
     }
 
     protected void buildCarpetRecipe(RecipeOutput output, ItemLike carpet, ItemLike wool, ItemLike dye, String name) {
